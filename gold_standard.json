@@ -1,0 +1,24 @@
+[
+  {
+    "user_input": "We need a Pharmacist at City Hospital in Denver from 9AM to 5PM at $50/hr",
+    "expected": {
+      "position": "Pharmacist",
+      "start_time": "9AM",
+      "end_time": "5PM",
+      "rate": "$50/hr",
+      "facility_name": "City Hospital",
+      "location": "Denver"
+    }
+  },
+  {
+    "user_input": "Need a Technician at General Hospital in New York from 2PM to 10PM at $45/hr",
+    "expected": {
+      "position": "Technician",
+      "start_time": "2PM",
+      "end_time": "10PM",
+      "rate": "$45/hr",
+      "facility_name": "General Hospital",
+      "location": "New York"
+    }
+  }
+]
