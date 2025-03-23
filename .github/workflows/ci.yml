@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: ["3.9"] # Adjust if you use a different version
+        python-version: ["3.9"] # Adjust if necessary
 
     steps:
       - name: Checkout repository
@@ -28,6 +28,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Install testing dependencies
+        run: pip install pytest
+
       - name: Run tests
-        run: |
-          pytest
+        run: pytest
