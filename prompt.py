@@ -11,11 +11,13 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def extract_shift_details(user_input):
     system_prompt = (
-        "You are an assistant that extracts shift details from a user's message. "
-        "Return only valid JSON without any additional commentary or markdown formatting, "
-        "with the keys: position, start_time, end_time, rate. "
-        "If any key is missing, set its value to 'unknown'."
-    )
+        "You are a precise assistant for extracting shift details. "
+        "From the user's input, return a single line of valid JSON with exactly the following keys: "
+        '"position", "start_time", "end_time", "rate", "facility_name", "location". '
+        "Do not include any additional text or markdown formatting. "
+        "If a detail is not provided in the input, set its value to 'unknown'. "
+        "The output must be a valid JSON object. For example: "
+        '{"position": "Pharmacist", "start_time": "9AM", "end_time": "5PM", "rate": "$50/hr", "facility_name": "City Hospital", "location": "Denver"}.')
 
     try:
         response = openai.ChatCompletion.create(
