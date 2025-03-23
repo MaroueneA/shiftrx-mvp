@@ -3,7 +3,7 @@ import os
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from dotenv import load_dotenv
-from logger import logger  # Import our logger
+from logger import logger  # Ensure logger is imported
 
 load_dotenv()
 
@@ -30,18 +30,19 @@ def get_connection():
         raise
 
 
-def insert_shift(position, start_time, end_time, rate):
+def insert_shift(position, start_time, end_time, rate, facility_name="unknown", location="unknown"):
     conn = None
     shift_id = None
     try:
         conn = get_connection()
         cur = conn.cursor(cursor_factory=RealDictCursor)
         query = """
-            INSERT INTO shifts (position, start_time, end_time, rate)
-            VALUES (%s, %s, %s, %s)
+            INSERT INTO shifts (position, start_time, end_time, rate, facility_name, location)
+            VALUES (%s, %s, %s, %s, %s, %s)
             RETURNING id;
         """
-        cur.execute(query, (position, start_time, end_time, rate))
+        cur.execute(query, (position, start_time, end_time,
+                    rate, facility_name, location))
         shift_id = cur.fetchone()['id']
         conn.commit()
         cur.close()
