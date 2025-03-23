@@ -19,12 +19,17 @@ def create_shift():
     logger.info("Received user input: %s", user_input)
     shift_details = extract_shift_details(user_input)
 
+    # Existing fields
     position = shift_details.get("position", "unknown")
     start_time = shift_details.get("start_time", "unknown")
     end_time = shift_details.get("end_time", "unknown")
     rate = shift_details.get("rate", "unknown")
+    # New fields (if present in LLM response; else default to "unknown")
+    facility_name = shift_details.get("facility_name", "unknown")
+    location = shift_details.get("location", "unknown")
 
-    shift_id = insert_shift(position, start_time, end_time, rate)
+    shift_id = insert_shift(position, start_time, end_time,
+                            rate, facility_name, location)
     if shift_id:
         logger.info("Shift created with id: %s", shift_id)
         return jsonify({"success": True, "shift_id": shift_id}), 201
