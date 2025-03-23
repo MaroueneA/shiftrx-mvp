@@ -1,10 +1,10 @@
 # ShiftRx MVP
 
-ShiftRx MVP is a minimal viable product for an AI-powered staffing solution designed for healthcare facility managers. It allows managers to quickly post shift details by sending natural language requests. The application processes the input using an LLM (OpenAI GPT-3.5 Turbo) to extract key shift details, which are then stored in a PostgreSQL database.
+ShiftRx MVP is a minimal viable product for an AI-powered staffing solution designed for healthcare facility managers. It allows managers to quickly post shift details by sending natural language requests. The application processes the input using an LLM (OpenAI GPT-4o) to extract key shift details, which are then stored in a PostgreSQL database.
 
 ## Features
 
-- **Natural Language Processing:** Uses OpenAI's GPT-3.5 Turbo to parse shift details from a free-form text input.
+- **Natural Language Processing:** Uses OpenAI's GPT-4o to parse shift details from a free-form text input.
 - **RESTful API:** A single endpoint (`POST /shifts/create`) accepts user input and returns a confirmation with a unique shift ID.
 - **Database Persistence:** Shift details including position, start time, end time, rate, facility name, and location are stored in a PostgreSQL database.
 - **Robust Error Handling & Logging:** Comprehensive logging is implemented using Python's logging module.
@@ -14,7 +14,7 @@ ShiftRx MVP is a minimal viable product for an AI-powered staffing solution desi
 
 - **Backend Framework:** Python with Flask
 - **Database:** PostgreSQL (with schema including columns: `id`, `position`, `start_time`, `end_time`, `rate`, `facility_name`, `location`, `created_at`)
-- **NLP/LLM Integration:** OpenAI GPT-3.5 Turbo
+- **NLP/LLM Integration:** OpenAI GPT-4o
 - **Environment Management:** python-dotenv
 - **Testing:** pytest
 - **CI/CD:** GitHub Actions
@@ -175,13 +175,6 @@ GitHub Actions is set up to run tests automatically on every push or pull reques
 ## Logging
 
 The application uses Python’s logging module for robust error handling and debugging. Log messages are printed to the console with timestamps and log levels.
-
-## Future Enhancements
-
-- **Authentication & Authorization:** To secure API endpoints.
-- **Improved LLM Prompting:** Further refinement for more accurate detail extraction.
-- **Frontend Interface:** To allow facility managers to interact with the system via a web UI.
-- **Advanced CI/CD Pipelines:** With deployment stages and monitoring.
 
 ## License
 
