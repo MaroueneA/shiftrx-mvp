@@ -12,7 +12,7 @@ This project is a minimal viable product (MVP) for the ShiftRx AI application, w
 
 - **Python 3** and **Flask** for the REST API
 - **PostgreSQL** for database management
-- **OpenAI API** (or Ollama for local inference) for natural language processing
+- **OpenAI API**  for natural language processing
 - **psycopg2** for PostgreSQL connectivity
 - **python-dotenv** for environment variable management
 
