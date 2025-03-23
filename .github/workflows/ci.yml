@@ -54,6 +54,21 @@ jobs:
             fi
           done
 
+      - name: Create database schema
+        env:
+          PGPASSWORD: postgres
+        run: |
+          psql -h localhost -U postgres -d shiftrx -c "CREATE TABLE IF NOT EXISTS shifts (
+            id SERIAL PRIMARY KEY,
+            position VARCHAR(50),
+            start_time VARCHAR(50),
+            end_time VARCHAR(50),
+            rate VARCHAR(50),
+            facility_name VARCHAR(100) DEFAULT 'unknown',
+            location VARCHAR(100) DEFAULT 'unknown',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+          );"
+
       - name: Run tests
         env:
           OPENAI_API_KEY: dummy-key
